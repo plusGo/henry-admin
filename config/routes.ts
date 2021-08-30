@@ -3,6 +3,14 @@ export default [
   {
     path: '/',
     component: '@/layouts/AdminLayout',
-    routes: [{ path: 'welcome', component: '@/pages/Welcome' }],
+    routes: [
+      { path: 'welcome', component: '@/pages/Welcome' },
+      {
+        name: 'henry-admin-data-center',
+        icon: 'smile',
+        path: 'data-center',
+        microApp: 'henry-admin-data-center',
+      },
+    ],
   },
 ];

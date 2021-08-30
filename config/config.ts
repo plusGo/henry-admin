@@ -16,6 +16,16 @@ export default defineConfig({
     },
   },
   devServer: {
-    port: 8081,
+    port: 8001,
+  },
+  qiankun: {
+    master: {
+      apps: [
+        {
+          name: 'henry-admin-data-center',
+          entry: 'http://localhost:8002',
+        },
+      ],
+    },
   },
 });
