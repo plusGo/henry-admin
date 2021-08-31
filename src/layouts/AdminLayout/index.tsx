@@ -7,6 +7,7 @@ import {
   VideoCameraOutlined,
   UploadOutlined,
 } from '@ant-design/icons';
+import Loading from '@/components/Loading';
 
 const { Header, Sider, Content } = Layout;
 
@@ -46,7 +47,10 @@ const AdminLayout: FC = (props) => {
       </Sider>
       <Layout>
         <Header className="bg-white shadow h-20"></Header>
-        <Content className="overflow-auto">{props.children}</Content>
+        <Content className="overflow-auto">
+          <Loading />
+          {props.children}
+        </Content>
       </Layout>
     </Layout>
   );

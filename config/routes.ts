@@ -1,3 +1,5 @@
+import Loading from '@/components/Loading';
+
 export default [
   { path: '/', redirect: '/welcome' },
   {
@@ -6,10 +8,14 @@ export default [
     routes: [
       { path: 'welcome', component: '@/pages/Welcome' },
       {
-        name: 'henry-admin-data-center',
-        icon: 'smile',
         path: 'data-center',
         microApp: 'henry-admin-data-center',
+        microAppProp: {
+          autoSetLoading: true,
+          className: 'myContainer',
+          loader: Loading,
+          wrapperClassName: 'myWrapper',
+        },
       },
     ],
   },
