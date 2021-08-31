@@ -20,12 +20,7 @@ export default defineConfig({
   },
   qiankun: {
     master: {
-      apps: [
-        {
-          name: 'henry-admin-data-center',
-          entry: 'http://localhost:8002',
-        },
-      ],
+      apps: [],
     },
   },
 });

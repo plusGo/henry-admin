@@ -1,5 +1,3 @@
-import Loading from '@/components/Loading';
-
 export default [
   { path: '/', redirect: '/welcome' },
   {
@@ -10,13 +8,10 @@ export default [
       {
         path: 'data-center',
         microApp: 'henry-admin-data-center',
-        microAppProp: {
-          autoSetLoading: true,
-          className: 'myContainer',
-          loader: Loading,
-          wrapperClassName: 'myWrapper',
-        },
       },
     ],
   },
+  // {
+  //   component: '@/pages/NotFound',
+  // },
 ];
