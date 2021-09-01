@@ -1,7 +1,7 @@
 export default function WelcomePage() {
   return (
     <div>
-      <h1>Welc111ome</h1>
+      <h1>i am welcome page</h1>
     </div>
   );
 }

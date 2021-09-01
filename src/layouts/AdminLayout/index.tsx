@@ -30,7 +30,7 @@ const AdminLayout: FC = (props) => {
           </Menu.Item>
 
           <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-            功能管理
+            <Link to="/data-center/welcome">主数据管理</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<UploadOutlined />}>
             nav 3
@@ -48,7 +48,7 @@ const AdminLayout: FC = (props) => {
       <Layout>
         <Header className="bg-white shadow-lg h-20"></Header>
         <Content className="overflow-auto flex items-center justify-center">
-          11111{props.children}
+          {props.children}
         </Content>
       </Layout>
     </Layout>

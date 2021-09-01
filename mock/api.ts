@@ -8,7 +8,7 @@ export default {
     ],
     routes: [
       {
-        path: 'data-center',
+        path: '/data-center',
         microApp: 'data-center',
         microAppProps: {
           autoSetLoading: true,
