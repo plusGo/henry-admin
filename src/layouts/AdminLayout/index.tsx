@@ -1,33 +1,34 @@
 import React, { FC, useState } from 'react';
 import { Layout, Menu } from 'antd';
 import {
-  MenuUnfoldOutlined,
   MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
-  UploadOutlined,
 } from '@ant-design/icons';
+import { Link } from 'umi';
 
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout: FC = (props) => {
   const [collapsed, setCollapsed] = useState(false);
-
   return (
     <Layout className="w-screen h-screen">
       <Sider
         trigger={null}
         collapsible
         collapsed={collapsed}
-        className="relative"
+        className="relative shadow-lg"
       >
         <div className="text-white text-3xl flex items-center justify-center py-8 font-bold">
           {collapsed ? 'H' : 'Henry Admin'}
         </div>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
           <Menu.Item key="1" icon={<UserOutlined />}>
-            欢迎
+            <Link to="/welcome">欢迎</Link>
           </Menu.Item>
+
           <Menu.Item key="2" icon={<VideoCameraOutlined />}>
             功能管理
           </Menu.Item>
@@ -45,8 +46,10 @@ const AdminLayout: FC = (props) => {
         )}
       </Sider>
       <Layout>
-        <Header className="bg-white shadow h-20"></Header>
-        <Content className="overflow-auto">{props.children}</Content>
+        <Header className="bg-white shadow-lg h-20"></Header>
+        <Content className="overflow-auto flex items-center justify-center">
+          11111{props.children}
+        </Content>
       </Layout>
     </Layout>
   );

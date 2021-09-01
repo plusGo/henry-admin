@@ -19,8 +19,6 @@ export default defineConfig({
     port: 8001,
   },
   qiankun: {
-    master: {
-      apps: [],
-    },
+    master: {},
   },
 });
