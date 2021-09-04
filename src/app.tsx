@@ -1,18 +1,16 @@
 import { getMicroAppConfig } from '@/services/micro-app-config';
+import React from 'react';
+import AuthProvider from '@/components/AuthProvider';
 
 let extraRoutes: any[] = [];
 
 export function patchRoutes({ routes }: any) {
-  console.log(routes);
-
   extraRoutes.forEach((element) => {
     routes[0].routes.unshift(element);
   });
-  console.log(routes);
 }
 
 export function render(oldRender: any) {
-  console.log('render');
   Promise.resolve([]).then((routes) => {
     extraRoutes = routes;
     oldRender();
@@ -20,6 +18,9 @@ export function render(oldRender: any) {
 }
 
 export const qiankun = getMicroAppConfig().then((res) => {
-  console.log(res);
   return Promise.resolve(res);
 });
+
+export function rootContainer(container: any) {
+  return React.createElement(AuthProvider, null, container);
+}

@@ -11,4 +11,5 @@ export default [
       { component: '@/pages/NotFound' },
     ],
   },
+  { component: '@/pages/NotFound' },
 ];

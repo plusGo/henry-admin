@@ -1,6 +1,7 @@
-import { request } from 'umi';
+import { history, request } from 'umi';
 import { SafeAny } from '@/types/safe-any';
 import { UserToken } from '@/types/user-token';
+import { environment } from '@/environments/environment';
 
 export async function ssoLogin(
   code: string,
@@ -16,18 +17,34 @@ export async function ssoLogin(
   });
 }
 
-const SESSION_STORAGE_KEY = '__session_storage_key__';
+const MICRO_USER_TOKEN_KEY = '__micro_user_token_key__';
 
-export const getUserToken = (): UserToken | null => {
-  const data = window.sessionStorage.getItem(SESSION_STORAGE_KEY);
+export function getUserToken(): UserToken | null {
+  const data = window.sessionStorage.getItem(MICRO_USER_TOKEN_KEY);
   if (!data) {
     return null;
   }
   return JSON.parse(data);
-};
+}
 
-export const removeUserToken = () =>
-  window.sessionStorage.removeItem(SESSION_STORAGE_KEY);
+export function removeUserToken() {
+  window.sessionStorage.removeItem(MICRO_USER_TOKEN_KEY);
+}
 
-export const setUserToken = (token: UserToken) =>
-  window.sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(token));
+export function cacheUserToken(token: UserToken) {
+  window.sessionStorage.setItem(MICRO_USER_TOKEN_KEY, JSON.stringify(token));
+}
+
+export function redirectToSSOLogin(): void {
+  window.location.href = `${
+    environment.redirectUri
+  }?redirectUri=${generateRedirectUri()}&clientId=${environment.clientId}`;
+}
+
+function generateRedirectUri(): string {
+  return encodeURIComponent(
+    `${environment.ssoLoginUri}?redirectUri=${encodeURIComponent(
+      history.location.pathname,
+    )}`,
+  );
+}
