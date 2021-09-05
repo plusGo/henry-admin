@@ -2,6 +2,11 @@ import { defineConfig } from 'umi';
 import routes from './routes';
 
 export default defineConfig({
+  define: {
+    REDIRECT_URI: 'http://localhost:8001/login',
+    SSO_LOGIN_URI: 'http://localhost:8000/login',
+    CLIENT_ID: '111111111111111111111111111111111112',
+  },
   nodeModulesTransform: {
     type: 'none',
   },
@@ -21,4 +26,5 @@ export default defineConfig({
   qiankun: {
     master: {},
   },
+  title: 'Henry',
 });

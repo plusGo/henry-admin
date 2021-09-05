@@ -1,7 +1,6 @@
 import { history, request } from 'umi';
 import { SafeAny } from '@/types/safe-any';
 import { UserToken } from '@/types/user-token';
-import { environment } from '@/environments/environment';
 
 export async function ssoLogin(
   code: string,
@@ -36,14 +35,12 @@ export function cacheUserToken(token: UserToken) {
 }
 
 export function redirectToSSOLogin(): void {
-  window.location.href = `${
-    environment.redirectUri
-  }?redirectUri=${generateRedirectUri()}&clientId=${environment.clientId}`;
+  window.location.href = `${SSO_LOGIN_URI}?redirectUri=${generateRedirectUri()}&clientId=${CLIENT_ID}`;
 }
 
 function generateRedirectUri(): string {
   return encodeURIComponent(
-    `${environment.ssoLoginUri}?redirectUri=${encodeURIComponent(
+    `${REDIRECT_URI}?redirectUri=${encodeURIComponent(
       history.location.pathname,
     )}`,
   );
